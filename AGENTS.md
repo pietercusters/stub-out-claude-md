@@ -33,3 +33,6 @@ the full behavior table.
 - All content operations are byte-level so non-UTF-8 files survive verbatim.
 - Releases are git tags (`vX.Y.Z`); consumers pin `rev:` to a tag and update
   via `pre-commit autoupdate`. Bump `version` in `pyproject.toml` when tagging.
+  Release with `gh release create vX.Y.Z --generate-notes`; the Release
+  workflow (`.github/workflows/release.yml`) then verifies the tag matches
+  the pyproject version and re-runs the tests at the tagged commit.
