@@ -1,3 +1,5 @@
+<div align="center">
+
 # stub-out-claude-md
 
 [![CI](https://github.com/pietercusters/stub-out-claude-md/actions/workflows/ci.yml/badge.svg)](https://github.com/pietercusters/stub-out-claude-md/actions/workflows/ci.yml)
@@ -12,6 +14,8 @@ A simple opinionated solution to Anthropic's refusal to adopt the [AGENTS.md](ht
 **`AGENTS.md` is source of truth, `CLAUDE.md` points to it.**
 
 This is a pre-commit hook that enforces this.
+
+</div>
 
 ## What it does, in short
 
