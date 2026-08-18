@@ -22,6 +22,15 @@ repos:
     -   id: stub-out-claude-md
 ```
 
+pre-commit requires `rev` to be an immutable revision (a tag), not a branch
+like `main` — hook environments are cached per rev, so a moving ref would
+never update anyway. To bump all hooks in your config to their latest tags,
+run:
+
+```bash
+pre-commit autoupdate
+```
+
 ## What it does
 
 | You have | The hook does |
@@ -63,13 +72,18 @@ passes. Content moves are byte-exact (non-UTF-8 files included).
 
 ## Development
 
+The project is managed with [uv](https://docs.astral.sh/uv/):
+
 ```bash
-python -m venv .venv && .venv/bin/pip install -e '.[test]'
-.venv/bin/python -m pytest
+uv sync          # create .venv with the project + dev dependencies
+uv run pytest    # run the unit tests
 
 # end-to-end against a scratch repo:
-pre-commit try-repo /path/to/stub-out-claude-md stub-out-claude-md --verbose --all-files
+uv run pre-commit try-repo /path/to/stub-out-claude-md stub-out-claude-md --verbose --all-files
 ```
+
+CI (GitHub Actions) runs the test suite on Linux, macOS, and Windows against
+every supported Python version (3.9 through 3.14).
 
 ## License
 

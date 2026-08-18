@@ -20,8 +20,8 @@ Homepage = "https://github.com/pietercusters/stub-out-claude-md"
 [project.scripts]
 stub-out-claude-md = "stub_out_claude_md:main"
 
-[project.optional-dependencies]
-test = ["pytest"]
+[dependency-groups]
+dev = ["pytest>=8", "pre-commit>=4"]
 
 [tool.setuptools]
 package-dir = { "" = "src" }

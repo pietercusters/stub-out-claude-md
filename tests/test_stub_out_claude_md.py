@@ -1,7 +1,7 @@
 import os
 import shutil
 import subprocess
-import sys
+import tempfile
 
 import pytest
 
@@ -35,9 +35,18 @@ def assert_idempotent(tmp_path, *paths):
     assert snapshot(tmp_path) == before
 
 
+def _can_symlink():
+    # On Windows, os.symlink exists but fails without Developer Mode/privilege.
+    with tempfile.TemporaryDirectory() as d:
+        try:
+            os.symlink("target", os.path.join(d, "link"))
+        except (OSError, NotImplementedError):
+            return False
+    return True
+
+
 symlinks_supported = pytest.mark.skipif(
-    sys.platform == "win32" and not hasattr(os, "symlink"),
-    reason="symlinks unavailable",
+    not _can_symlink(), reason="symlinks unavailable on this system"
 )
 
 
