@@ -1,0 +1,32 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      # For a release event, this checks out the tagged commit.
+      - uses: actions/checkout@v4
+
+      - name: Check tag matches pyproject.toml version
+        run: |
+          tag='${{ github.ref_name }}'
+          version=$(python3 -c "import tomllib; print(tomllib.load(open('pyproject.toml','rb'))['project']['version'])")
+          if [ "v${version}" != "${tag}" ]; then
+            echo "::error::Tag ${tag} does not match pyproject.toml version ${version} (expected v${version})"
+            exit 1
+          fi
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Run tests at the tagged commit
+        run: |
+          uv sync --locked
+          uv run pytest -q
+
+  # When publishing to PyPI: add a `publish` job here that needs `validate`,
+  # runs `uv build` + `uv publish`, and uses PyPI Trusted Publishing
+  # (permissions: id-token: write) — no API tokens required.
