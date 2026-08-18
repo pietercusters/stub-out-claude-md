@@ -1,0 +1,13 @@
+- id: stub-out-claude-md
+  name: stub out CLAUDE.md ("@AGENTS.md")
+  description: >-
+    Keep AGENTS.md as the source of truth and CLAUDE.md as an @AGENTS.md
+    import stub, per directory. Moves/merges content, never discards it,
+    and converts symlinks into regular files.
+  entry: stub-out-claude-md
+  language: python
+  files: '(?i)(^|/)(claude|agents)\.md$'
+  # identify tags a symlink only as `symlink`, never `file`; the default
+  # `types: [file]` would silently skip symlinked CLAUDE.md files.
+  types_or: [file, symlink]
+  minimum_pre_commit_version: '2.9.2'
