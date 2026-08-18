@@ -1,4 +1,6 @@
-# stub-out-claude-md
+<div align="center">
+
+# Stub out CLAUDE.md
 
 [![CI](https://github.com/pietercusters/stub-out-claude-md/actions/workflows/ci.yml/badge.svg)](https://github.com/pietercusters/stub-out-claude-md/actions/workflows/ci.yml)
 [![Latest tag](https://img.shields.io/github/v/tag/pietercusters/stub-out-claude-md?label=release&color=blue)](https://github.com/pietercusters/stub-out-claude-md/tags)
@@ -7,11 +9,13 @@
 [![License: MIT](https://img.shields.io/github/license/pietercusters/stub-out-claude-md?color=green)](https://github.com/pietercusters/stub-out-claude-md/blob/main/LICENSE)
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 
-A simple opinionated solution to Anthropic's refusal to adopt the [AGENTS.md](https://agents.md/) open format.
+A simple opinionated solution to Anthropic's [stubborn](https://github.com/anthropics/claude-code/issues/6235) [refusal](https://github.com/anthropics/claude-code/issues/31005) to adopt the [AGENTS.md](https://agents.md/) open format.
 
 **`AGENTS.md` is source of truth, `CLAUDE.md` points to it.**
 
 This is a pre-commit hook that enforces this.
+
+</div>
 
 ## What it does, in short
 
@@ -33,9 +37,7 @@ repos:
     -   id: stub-out-claude-md
 ```
 
-That runs on all changed files.
-
-It is recommended to run `pre-commit run stub-out-claude-md --all-files` once locally, and always in CI.
+That runs on all changed files. It is recommended to run `pre-commit run stub-out-claude-md --all-files` once locally, and always in CI.
 
 To bump `rev` to the latest release later, run `pre-commit autoupdate`.
 
@@ -60,7 +62,7 @@ directory literally named `CLAUDE.md`, or wrong-case filenames like
 
 Like other formatting hooks, a run that changes files exits non-zero and
 shows what it did; review, `git add`, and commit again — the second run
-passes. Content moves are byte-exact (non-UTF-8 files included).
+passes. 
 
 ## Notes
 
@@ -90,8 +92,7 @@ uv run pytest    # run the unit tests
 uv run pre-commit try-repo /path/to/stub-out-claude-md stub-out-claude-md --verbose --all-files
 ```
 
-CI (GitHub Actions) runs the test suite on Linux, macOS, and Windows against
-every supported Python version (3.9 through 3.14).
+Feel free to contribute.
 
 ## License
 
