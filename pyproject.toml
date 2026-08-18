@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "stub-out-claude-md"
-version = "0.1.0"
+version = "0.2.0"
 description = "pre-commit hook: keep AGENTS.md as source of truth and CLAUDE.md as an @AGENTS.md stub"
 readme = "README.md"
 license = { text = "MIT" }
