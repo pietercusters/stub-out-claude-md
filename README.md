@@ -9,7 +9,7 @@
 [![License: MIT](https://img.shields.io/github/license/pietercusters/stub-out-claude-md?color=green)](https://github.com/pietercusters/stub-out-claude-md/blob/main/LICENSE)
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 
-A simple opinionated solution to Anthropic's refusal to adopt the [AGENTS.md](https://agents.md/) open format.
+A simple opinionated solution to Anthropic's [stubborn](https://github.com/anthropics/claude-code/issues/6235) [refusal](https://github.com/anthropics/claude-code/issues/31005) to adopt the [AGENTS.md](https://agents.md/) open format.
 
 **`AGENTS.md` is source of truth, `CLAUDE.md` points to it.**
 
