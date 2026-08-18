@@ -37,9 +37,7 @@ repos:
     -   id: stub-out-claude-md
 ```
 
-That runs on all changed files.
-
-It is recommended to run `pre-commit run stub-out-claude-md --all-files` once locally, and always in CI.
+That runs on all changed files. It is recommended to run `pre-commit run stub-out-claude-md --all-files` once locally, and always in CI.
 
 To bump `rev` to the latest release later, run `pre-commit autoupdate`.
 
