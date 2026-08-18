@@ -1,5 +1,12 @@
 # stub-out-claude-md
 
+[![CI](https://github.com/pietercusters/stub-out-claude-md/actions/workflows/ci.yml/badge.svg)](https://github.com/pietercusters/stub-out-claude-md/actions/workflows/ci.yml)
+[![Latest tag](https://img.shields.io/github/v/tag/pietercusters/stub-out-claude-md?label=release&color=blue)](https://github.com/pietercusters/stub-out-claude-md/tags)
+[![Python](https://img.shields.io/badge/python-3.9%E2%80%933.14-blue?logo=python&logoColor=white)](https://github.com/pietercusters/stub-out-claude-md/blob/main/pyproject.toml)
+[![OS](https://img.shields.io/badge/os-linux%20%7C%20macos%20%7C%20windows-lightgrey)](https://github.com/pietercusters/stub-out-claude-md/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/github/license/pietercusters/stub-out-claude-md?color=green)](https://github.com/pietercusters/stub-out-claude-md/blob/main/LICENSE)
+[![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
+
 A simple opinionated solution to Anthropic's refusal to adopt the [AGENTS.md](https://agents.md/) open format.
 
 **`AGENTS.md` is source of truth, `CLAUDE.md` points to it.**
@@ -26,9 +33,11 @@ repos:
     -   id: stub-out-claude-md
 ```
 
-That runs on all changed files. 
+That runs on all changed files.
 
-It is recommened to run `pre-commit run stub-out-claude-md --all-files` once locally, and always in CI. 
+It is recommended to run `pre-commit run stub-out-claude-md --all-files` once locally, and always in CI.
+
+To bump `rev` to the latest release later, run `pre-commit autoupdate`.
 
 ## What it does, in more detail
 
