@@ -1,8 +1,12 @@
 # stub-out-claude-md
 
-A [pre-commit](https://pre-commit.com) hook that keeps `AGENTS.md` as the
-single source of truth for agent instructions, and `CLAUDE.md` as a stub
-containing only `@AGENTS.md` (Claude Code's import syntax).
+A simple opinionated solution to Anthropic's refusal to adopt the [AGENTS.md](https://agents.md/) open format.
+
+**`AGENTS.md` is source of truth, `CLAUDE.md` points to it.**
+
+This is a pre-commit hook that enforces this.
+
+## What it does, in short
 
 Per directory, the hook enforces: either **neither** file exists, or **both**
 exist with `AGENTS.md` holding the real content and `CLAUDE.md` being exactly
@@ -22,16 +26,11 @@ repos:
     -   id: stub-out-claude-md
 ```
 
-pre-commit requires `rev` to be an immutable revision (a tag), not a branch
-like `main` — hook environments are cached per rev, so a moving ref would
-never update anyway. To bump all hooks in your config to their latest tags,
-run:
+That runs on all changed files. 
 
-```bash
-pre-commit autoupdate
-```
+It is recommened to run `pre-commit run stub-out-claude-md --all-files` once locally, and always in CI. 
 
-## What it does
+## What it does, in more detail
 
 | You have | The hook does |
 | --- | --- |
