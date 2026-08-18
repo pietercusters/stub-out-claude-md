@@ -1,6 +1,6 @@
 <div align="center">
 
-# stub-out-claude-md
+# Stub out CLAUDE.md
 
 [![CI](https://github.com/pietercusters/stub-out-claude-md/actions/workflows/ci.yml/badge.svg)](https://github.com/pietercusters/stub-out-claude-md/actions/workflows/ci.yml)
 [![Latest tag](https://img.shields.io/github/v/tag/pietercusters/stub-out-claude-md?label=release&color=blue)](https://github.com/pietercusters/stub-out-claude-md/tags)
@@ -64,7 +64,7 @@ directory literally named `CLAUDE.md`, or wrong-case filenames like
 
 Like other formatting hooks, a run that changes files exits non-zero and
 shows what it did; review, `git add`, and commit again — the second run
-passes. Content moves are byte-exact (non-UTF-8 files included).
+passes. 
 
 ## Notes
 
@@ -94,8 +94,7 @@ uv run pytest    # run the unit tests
 uv run pre-commit try-repo /path/to/stub-out-claude-md stub-out-claude-md --verbose --all-files
 ```
 
-CI (GitHub Actions) runs the test suite on Linux, macOS, and Windows against
-every supported Python version (3.9 through 3.14).
+Feel free to contribute.
 
 ## License
 
