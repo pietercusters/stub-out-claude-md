@@ -20,8 +20,15 @@ Homepage = "https://github.com/pietercusters/stub-out-claude-md"
 [project.scripts]
 stub-out-claude-md = "stub_out_claude_md:main"
 
-[project.optional-dependencies]
-test = ["pytest"]
+[dependency-groups]
+dev = ["pytest>=8", "pre-commit>=4"]
+
+# Public repo: lock against PyPI, overriding any contributor-local index
+# (e.g. a company registry in ~/.config/uv/uv.toml).
+[[tool.uv.index]]
+name = "pypi"
+url = "https://pypi.org/simple"
+default = true
 
 [tool.setuptools]
 package-dir = { "" = "src" }

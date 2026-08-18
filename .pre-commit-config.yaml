@@ -9,3 +9,7 @@ repos:
     rev: v4.2.0
     hooks:
     -   id: validate_manifest
+-   repo: https://github.com/pietercusters/stub-out-claude-md
+    rev: v0.1.0
+    hooks:
+    -   id: stub-out-claude-md

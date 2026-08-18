@@ -1,8 +1,19 @@
 # stub-out-claude-md
 
-A [pre-commit](https://pre-commit.com) hook that keeps `AGENTS.md` as the
-single source of truth for agent instructions, and `CLAUDE.md` as a stub
-containing only `@AGENTS.md` (Claude Code's import syntax).
+[![CI](https://github.com/pietercusters/stub-out-claude-md/actions/workflows/ci.yml/badge.svg)](https://github.com/pietercusters/stub-out-claude-md/actions/workflows/ci.yml)
+[![Latest tag](https://img.shields.io/github/v/tag/pietercusters/stub-out-claude-md?label=release&color=blue)](https://github.com/pietercusters/stub-out-claude-md/tags)
+[![Python](https://img.shields.io/badge/python-3.9%E2%80%933.14-blue?logo=python&logoColor=white)](https://github.com/pietercusters/stub-out-claude-md/blob/main/pyproject.toml)
+[![OS](https://img.shields.io/badge/os-linux%20%7C%20macos%20%7C%20windows-lightgrey)](https://github.com/pietercusters/stub-out-claude-md/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/github/license/pietercusters/stub-out-claude-md?color=green)](https://github.com/pietercusters/stub-out-claude-md/blob/main/LICENSE)
+[![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
+
+A simple opinionated solution to Anthropic's refusal to adopt the [AGENTS.md](https://agents.md/) open format.
+
+**`AGENTS.md` is source of truth, `CLAUDE.md` points to it.**
+
+This is a pre-commit hook that enforces this.
+
+## What it does, in short
 
 Per directory, the hook enforces: either **neither** file exists, or **both**
 exist with `AGENTS.md` holding the real content and `CLAUDE.md` being exactly
@@ -22,7 +33,13 @@ repos:
     -   id: stub-out-claude-md
 ```
 
-## What it does
+That runs on all changed files.
+
+It is recommended to run `pre-commit run stub-out-claude-md --all-files` once locally, and always in CI.
+
+To bump `rev` to the latest release later, run `pre-commit autoupdate`.
+
+## What it does, in more detail
 
 | You have | The hook does |
 | --- | --- |
@@ -63,13 +80,18 @@ passes. Content moves are byte-exact (non-UTF-8 files included).
 
 ## Development
 
+The project is managed with [uv](https://docs.astral.sh/uv/):
+
 ```bash
-python -m venv .venv && .venv/bin/pip install -e '.[test]'
-.venv/bin/python -m pytest
+uv sync          # create .venv with the project + dev dependencies
+uv run pytest    # run the unit tests
 
 # end-to-end against a scratch repo:
-pre-commit try-repo /path/to/stub-out-claude-md stub-out-claude-md --verbose --all-files
+uv run pre-commit try-repo /path/to/stub-out-claude-md stub-out-claude-md --verbose --all-files
 ```
+
+CI (GitHub Actions) runs the test suite on Linux, macOS, and Windows against
+every supported Python version (3.9 through 3.14).
 
 ## License
 
